@@ -19,7 +19,8 @@ extension MarketListView {
     var body: some View {
         NavigationView {
             List {
-                ForEach(viewModel.model, id: \.self) {  crypto in
+                ForEach(viewModel.model.filter { searchCoins.isEmpty || $0.symbol.localizedCaseInsensitiveContains(searchCoins) }
+                        , id: \.self) {  crypto in
                     NavigationLink(destination: PriceChartView(viewModel: PriceChartVM(service: viewModel.service, id: crypto.id, name: crypto.name, currentPrice: viewModel.format.stringWithCurrency(fromNumber: Double(crypto.currentPrice), currencyCode: "USD"), symbol: crypto.symbol, thumbnailImage: crypto.thumbnailImage))) {
                         HStack {
                             ImageView(url: URL(string: crypto.thumbnailImage))
@@ -47,6 +48,7 @@ extension MarketListView {
             }.listStyle(.inset)
                 .navigationBarTitle("Markets")
                 .searchable(text: $searchCoins)
+                .refreshable { viewModel.fetchData() }
                 .alert(item: $viewModel.alert, content: { info in
                     Alert(title: Text(info.title),
                           message: Text(info.message),

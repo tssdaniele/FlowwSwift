@@ -55,9 +55,7 @@ extension PriceChartView {
                         y: .value("Prices", element.price)
                     )
                 }
-                //.interpolationMethod(.linear)
                 .lineStyle(StrokeStyle(lineWidth: 3))
-                //.symbolSize(100)
                 .foregroundStyle(.blue)
                 if let (startT, endT) = rangeTime {
                     RectangleMark(
