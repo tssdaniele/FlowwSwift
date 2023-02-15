@@ -24,9 +24,10 @@ final class FlowwSwiftTests: XCTestCase {
         switch chartResult {
         case .success(let chart):
             XCTAssertFalse(chart.prices.isEmpty)
-            let chartModel = chart.toModel(name: "stub1",
-                                           symbol: "stub2",
-                                           thumbnailImage: "stub3")
+            let chartModel = chart.toModel(id: "stub1",
+                                           name: "stub2",
+                                           symbol: "stub3",
+                                           thumbnailImage: "stub4")
             XCTAssertFalse(chartModel.prices.isEmpty)
         case .failure(let error):
             XCTAssertThrowsError(error.localizedDescription)

@@ -30,6 +30,7 @@
 		6673629F29969E4800E28EC5 /* ServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667362972996978300E28EC5 /* ServiceMock.swift */; };
 		667362A02996A06600E28EC5 /* coinsData.json in Resources */ = {isa = PBXBuildFile; fileRef = 6673629B299698D900E28EC5 /* coinsData.json */; };
 		667362A12996A06C00E28EC5 /* marketData.json in Resources */ = {isa = PBXBuildFile; fileRef = 6673629C299698D900E28EC5 /* marketData.json */; };
+		6680576F299BA554006AB7AE /* TimeRangePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6680576E299BA554006AB7AE /* TimeRangePicker.swift */; };
 		668AF6DC2997A52B003B0B27 /* Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668AF6DB2997A52B003B0B27 /* Format.swift */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +78,7 @@
 		667362972996978300E28EC5 /* ServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceMock.swift; sourceTree = "<group>"; };
 		6673629B299698D900E28EC5 /* coinsData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = coinsData.json; sourceTree = "<group>"; };
 		6673629C299698D900E28EC5 /* marketData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = marketData.json; sourceTree = "<group>"; };
+		6680576E299BA554006AB7AE /* TimeRangePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeRangePicker.swift; sourceTree = "<group>"; };
 		668AF6DB2997A52B003B0B27 /* Format.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Format.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -276,6 +278,7 @@
 			isa = PBXGroup;
 			children = (
 				66736295299678A500E28EC5 /* ImageView.swift */,
+				6680576E299BA554006AB7AE /* TimeRangePicker.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -436,6 +439,7 @@
 				668AF6DC2997A52B003B0B27 /* Format.swift in Sources */,
 				66101D4B29954880005C62F5 /* HistoricalMarketPrice.swift in Sources */,
 				66101D45299525C0005C62F5 /* MarketListViewModel.swift in Sources */,
+				6680576F299BA554006AB7AE /* TimeRangePicker.swift in Sources */,
 				66101D4929954850005C62F5 /* Coins.swift in Sources */,
 				66101D4129952595005C62F5 /* PriceChartModel.swift in Sources */,
 				66101D3429951E25005C62F5 /* CoinGeckoEndpoint.swift in Sources */,

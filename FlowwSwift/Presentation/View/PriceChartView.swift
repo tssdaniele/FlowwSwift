@@ -55,7 +55,8 @@ extension PriceChartView {
                         y: .value("Prices", element.price)
                     )
                 }
-                .lineStyle(StrokeStyle(lineWidth: 3))
+                .lineStyle(StrokeStyle(lineWidth: 2))
+                .interpolationMethod(.linear)
                 .foregroundStyle(.blue)
                 if let (startT, endT) = rangeTime {
                     RectangleMark(
@@ -66,21 +67,48 @@ extension PriceChartView {
                 }
             }
             .chartForegroundStyleScale([
-                "Prices": .blue
+                "Price": .blue
             ])
             .chartSymbolScale([
-                "Prices": Circle().strokeBorder(lineWidth: 3)
+                "Price": Circle().strokeBorder(lineWidth: 3)
             ])
             .chartXAxis {
-                AxisMarks(values: .stride(by: .month)) {
-                    AxisTick()
-                    AxisGridLine()
-                    AxisValueLabel(format: .dateTime.month(.abbreviated), centered: true)
+                switch viewModel.timeRangePicker {
+                case .lastSixMonths:
+                    AxisMarks(values: .stride(by: .month)) {
+                        AxisTick()
+                        AxisGridLine()
+                        AxisValueLabel(format: .dateTime.month(.wide), centered: true)
+                    }
+                case .lastYear:
+                    AxisMarks(values: .stride(by: .month)) {
+                        AxisTick()
+                        AxisGridLine()
+                        AxisValueLabel(format: .dateTime.month(.abbreviated), centered: true)
+                    }
+                case .lastTwoYears:
+                    AxisMarks(values: .stride(by: .year)) {
+                        AxisTick()
+                        AxisGridLine()
+                        AxisValueLabel(format: .dateTime.year(.defaultDigits), centered: true)
+                    }
+                case .lastFourYears:
+                    AxisMarks(values: .stride(by: .year)) {
+                        AxisTick()
+                        AxisGridLine()
+                        AxisValueLabel(format: .dateTime.year(.defaultDigits), centered: true)
+                    }
+                case .max:
+                    AxisMarks(values: .stride(by: .year)) {
+                        AxisTick()
+                        AxisGridLine()
+                        AxisValueLabel(format: .dateTime.year(.defaultDigits), centered: true)
+                    }
                 }
             }
             .chartYAxis(.automatic)
             .chartYScale(range: .plotDimension(endPadding: 0))
-            .chartLegend(.automatic)
+            .chartLegend(position: .top)
             .chartOverlay { proxy in
                         GeometryReader { nthGeoItem in
                             Rectangle().fill(.clear).contentShape(Rectangle())
@@ -106,6 +134,10 @@ extension PriceChartView {
                                 )
                         }
                     }
+            TimeRangePicker(value: $viewModel.timeRangePicker) {_ in
+                viewModel.fetchData()
+            }
+                .padding(.top)
         }.padding(8)
             .onAppear { viewModel.fetchData() }
     }
